@@ -35,7 +35,7 @@ curl http://<your-pi-ip>:9100/metrics
 ## Project Status
 
 - [x] Phase 1: Project setup & build pipeline
-- [ ] Phase 2: CPU metrics collection
+- [x] Phase 2: CPU metrics collection
 - [ ] Phase 3: HTTP server & API
 - [ ] Phase 4: Web dashboard
 - [ ] Phase 5: Deploy & test
