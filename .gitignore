@@ -1,0 +1,27 @@
+# Rust build artifacts
+/target
+
+# Vagrant VM state
+.vagrant/
+
+# Editor files
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.code-workspace
+
+# macOS
+.DS_Store
+
+# Environment-specific overrides
+.env
+.env.local
+
+
+# Added by cargo
+#
+# already existing elements were commented out
+
+#/target
