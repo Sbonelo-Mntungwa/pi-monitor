@@ -1,13 +1,21 @@
 mod metrics;
 mod server;
 
-fn main() {
-    println!("Pi-Monitor v{}", env!("CARGO_PKG_VERSION"));
-    println!("Build target: {}", std::env::consts::ARCH);
-    println!("Ready to monitor! (Stub — real server coming in Phase 3)");
+use metrics::cpu;
+use std::time::Duration;
 
-    match std::fs::read_to_string("/proc/loadavg") {
-        Ok(content) => println!("  /proc/loadavg: {}", content.trim()),
-        Err(e) => println!("  /proc not available: {} (normal on macOS)", e),
+#[tokio::main]
+async fn main() {
+    let port = 9100;
+    println!("Pi-Monitor v{}", env!("CARGO_PKG_VERSION"));
+
+    // Start CPU background sampler
+    let cpu_state = cpu::new_shared_metrics();
+    tokio::spawn(cpu::cpu_sampling_task(cpu_state.clone(), Duration::from_secs(2)));
+
+    println!("Listening on 0.0.0.0:{}", port);
+    if let Err(e) = server::run(port, cpu_state).await {
+        eprintln!("Server error: {}", e);
+        std::process::exit(1);
     }
 }
