@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pi-Monitor</title>
+<style>
+/* __CSS__ */
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <h1>&#9670; Pi-Monitor</h1>
+    <span class="version">v0.1.0</span>
+  </div>
+  <div class="header-right">
+    <div class="uptime-badge" id="uptime-badge">--</div>
+    <div class="status" id="status">
+      <span class="dot"></span>
+      <span id="status-text">connecting</span>
+    </div>
+  </div>
+</header>
+
+<div class="main-grid">
+
+  <div class="card cpu-card">
+    <div class="card-header">
+      <h2>&#9671; CPU</h2>
+      <span class="big-value" id="cpu-big">--%</span>
+    </div>
+    <canvas id="cpu-graph" height="70"></canvas>
+    <div class="cpu-modes" id="cpu-modes"></div>
+    <div class="cpu-cores" id="cpu-cores"></div>
+  </div>
+
+  <div class="mid-stack">
+    <div class="card mem-card">
+      <div class="card-header">
+        <h2>&#9671; Memory</h2>
+        <span class="big-value" id="mem-big">--%</span>
+      </div>
+      <div class="mem-row">
+        <canvas id="mem-ring" width="90" height="90"></canvas>
+        <div class="mem-details" id="mem-details"></div>
+      </div>
+    </div>
+
+    <div class="card sys-card">
+      <div class="card-header"><h2>&#9671; System</h2></div>
+      <div id="system"></div>
+    </div>
+
+    <div class="card net-card">
+      <div class="card-header"><h2>&#9671; Network</h2></div>
+      <div id="network"></div>
+    </div>
+  </div>
+
+  <div class="card disk-card">
+    <div class="card-header"><h2>&#9671; Disk</h2></div>
+    <div class="disk-list" id="disk"></div>
+  </div>
+
+</div>
+
+<div class="modal-backdrop" id="modal-backdrop">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <h2 id="modal-title"></h2>
+      <button class="modal-close" id="modal-close">&#10005;</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<div id="error-banner"></div>
+
+<script>
+/* __JS__ */
+</script>
+</body>
+</html>

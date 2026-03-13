@@ -1,3 +1,4 @@
+mod dashboard;
 mod metrics;
 mod server;
 

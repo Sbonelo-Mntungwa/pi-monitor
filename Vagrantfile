@@ -38,4 +38,6 @@ Vagrant.configure("2") do |config|
     echo "=== Pi-Monitor build VM ready! ==="
     echo "Run: cd /vagrant && ./scripts/build.sh"
   SHELL
+
+  config.vm.network "forwarded_port", guest: 9100, host: 9100
 end

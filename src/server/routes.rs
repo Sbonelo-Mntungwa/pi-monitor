@@ -18,12 +18,22 @@ pub async fn handle_request(
     cpu_state: SharedCpuMetrics,
 ) -> Result<Response<BoxBody>, hyper::Error> {
     let response = match req.uri().path() {
+        "/" => dashboard_handler(),
         "/health" => health_handler(),
         "/metrics" => metrics_handler(cpu_state),
         "/json" => json_handler(cpu_state),
         _ => not_found(),
     };
     Ok(response)
+}
+
+/// GET / — embedded HTML dashboard.
+fn dashboard_handler() -> Response<BoxBody> {
+    Response::builder()
+        .status(StatusCode::OK)
+        .header("Content-Type", "text/html; charset=utf-8")
+        .body(Full::new(Bytes::from(crate::dashboard::render())))
+        .unwrap()
 }
 
 /// GET /health — simple liveness check.
