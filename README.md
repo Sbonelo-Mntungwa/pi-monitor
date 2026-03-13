@@ -38,5 +38,5 @@ curl http://<your-pi-ip>:9100/metrics
 - [x] Phase 2: CPU metrics collection
 - [x] Phase 3: HTTP server & API
 - [x] Phase 4: Web dashboard
-- [ ] Phase 5: Deploy & test
-- [ ] Phase 6: Persistent startup (optional)
+- [x] Phase 5: Deploy & test
+- [x] Phase 6: Persistent startup (optional)
