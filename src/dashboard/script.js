@@ -128,7 +128,7 @@ function drawMemRing(canvas, pct) {
 
   // Center text
   ctx.fillStyle = '#e0f0f0';
-  ctx.font = '700 16px Rajdhani, sans-serif';
+  ctx.font = '700 14px Orbitron, sans-serif';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.fillText(pct.toFixed(0) + '%', cx, cy);
@@ -180,9 +180,7 @@ function renderMemory(mem) {
   $('mem-details').innerHTML =
     memRow('used', formatBytes(mem.used_bytes)) +
     memRow('total', formatBytes(mem.total_bytes)) +
-    memRow('avail', formatBytes(mem.available_bytes)) +
-    memRow('buf/cache', formatBytes(mem.buffers_bytes + mem.cached_bytes)) +
-    memRow('swap', formatBytes(mem.swap_total_bytes - mem.swap_free_bytes) + '/' + formatBytes(mem.swap_total_bytes));
+    memRow('avail', formatBytes(mem.available_bytes));
 }
 
 function memRow(label, val) {
@@ -197,10 +195,6 @@ function renderSystem(sys) {
   var scale = Math.max(4, Math.ceil(maxLoad));
 
   $('system').innerHTML =
-    '<div class="sys-grid">' +
-      sysItem('procs', sys.processes_running + '/' + sys.processes_total) +
-      sysItem('running', sys.processes_running) +
-    '</div>' +
     '<div class="load-bars">' +
       loadBar('1m', sys.load_1, scale) +
       loadBar('5m', sys.load_5, scale) +
@@ -231,10 +225,6 @@ function renderNetwork(ifaces) {
       '<div class="iface-stats">' +
         ifStat('rx', formatBytes(iface.rx_bytes)) +
         ifStat('tx', formatBytes(iface.tx_bytes)) +
-        ifStat('pkts↓', iface.rx_packets) +
-        ifStat('pkts↑', iface.tx_packets) +
-        ifStat('err', iface.rx_errors + iface.tx_errors) +
-        ifStat('drop', iface.rx_dropped + iface.tx_dropped) +
       '</div></div>';
   });
   $('network').innerHTML = html;
@@ -254,10 +244,8 @@ function renderDisk(disks) {
     if (mount.length > 20) mount = '...' + mount.slice(-18);
 
     html += '<div class="disk-item">' +
-      '<div class="disk-mount" title="' + d.mount_point + '">' + mount + '</div>' +
-      '<div class="disk-device">' + d.device + '</div>' +
       '<div class="disk-info">' +
-        '<span class="disk-info-used">' + formatBytes(d.used_bytes) + ' / ' + formatBytes(d.total_bytes) + '</span>' +
+        '<span class="disk-mount" title="' + d.mount_point + '">' + mount + '</span>' +
         '<span class="disk-info-pct" style="color:' + valColor(pct) + '">' + pct.toFixed(1) + '%</span>' +
       '</div>' +
       '<div class="disk-bar"><div class="disk-bar-fill ' + barColorClass(pct) + '" style="width:' + pct + '%"></div></div>' +

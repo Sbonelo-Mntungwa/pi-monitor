@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;600;700;900&display=swap');
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -19,7 +19,7 @@
   --amber: #fbbf24;
   --red: #f87171;
   --mono: 'Share Tech Mono', monospace;
-  --display: 'Rajdhani', sans-serif;
+  --display: 'Orbitron', sans-serif;
 }
 
 body {
@@ -57,7 +57,7 @@ header h1 {
 }
 
 .version {
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: var(--dim);
   background: var(--surface2);
   padding: 0.15rem 0.4rem;
@@ -68,7 +68,7 @@ header h1 {
 .header-right { display: flex; align-items: center; gap: 1rem; }
 
 .uptime-badge {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   color: var(--aqua);
   background: rgba(34, 211, 238, 0.08);
   padding: 0.15rem 0.5rem;
@@ -76,7 +76,7 @@ header h1 {
   border: 1px solid rgba(34, 211, 238, 0.2);
 }
 
-.status { font-size: 0.7rem; color: var(--dim); display: flex; align-items: center; gap: 5px; }
+.status { font-size: 0.8rem; color: var(--dim); display: flex; align-items: center; gap: 5px; }
 
 .status .dot {
   width: 6px; height: 6px;
@@ -120,7 +120,7 @@ header h1 {
 
 .card h2 {
   font-family: var(--display);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -129,7 +129,7 @@ header h1 {
 
 .big-value {
   font-family: var(--display);
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--accent);
 }
@@ -156,7 +156,7 @@ header h1 {
   display: flex;
   align-items: center;
   gap: 0.3rem;
-  font-size: 0.65rem;
+  font-size: 0.85rem;
   color: var(--dim);
 }
 
@@ -194,8 +194,8 @@ header h1 {
   pointer-events: none;
 }
 
-.core-box .core-name { font-size: 0.55rem; color: var(--dim); margin-bottom: 0.15rem; }
-.core-box .core-value { font-size: 0.9rem; font-weight: bold; position: relative; z-index: 1; }
+.core-box .core-name { font-size: 0.75rem; color: var(--dim); margin-bottom: 0.15rem; }
+.core-box .core-value { font-size: 1.15rem; font-weight: bold; position: relative; z-index: 1; }
 
 /* ── Middle stack ── */
 .mid-stack {
@@ -216,7 +216,7 @@ header h1 {
 
 #mem-ring { flex-shrink: 0; }
 
-.mem-details { flex: 1; font-size: 0.7rem; }
+.mem-details { flex: 1; font-size: 0.8rem; }
 
 .mem-row-item {
   display: flex;
@@ -237,7 +237,7 @@ header h1 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.3rem 0.8rem;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 
 .sys-item { display: flex; justify-content: space-between; }
@@ -251,7 +251,7 @@ header h1 {
   align-items: center;
   gap: 0.4rem;
   margin-bottom: 0.2rem;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
 }
 
 .load-bar-label { color: var(--dim); width: 28px; text-align: right; flex-shrink: 0; }
@@ -278,10 +278,10 @@ header h1 {
 .iface-block:last-child { margin-bottom: 0; }
 
 .iface-name {
-  font-size: 0.65rem;
+  font-size: 0.9rem;
   font-weight: bold;
   color: var(--aqua);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.25rem;
   display: flex;
   align-items: center;
   gap: 0.3rem;
@@ -289,7 +289,7 @@ header h1 {
 
 .iface-name::before {
   content: '◆';
-  font-size: 0.5rem;
+  font-size: 0.65rem;
   color: var(--teal);
 }
 
@@ -297,7 +297,7 @@ header h1 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.15rem 0.6rem;
-  font-size: 0.65rem;
+  font-size: 0.85rem;
 }
 
 .iface-stat { display: flex; justify-content: space-between; }
@@ -326,7 +326,7 @@ header h1 {
 .disk-item:last-child { border-bottom: none; }
 
 .disk-mount {
-  font-size: 0.65rem;
+  font-size: 0.8rem;
   color: var(--aqua);
   font-weight: bold;
   white-space: nowrap;
@@ -335,7 +335,7 @@ header h1 {
 }
 
 .disk-device {
-  font-size: 0.55rem;
+  font-size: 0.65rem;
   color: var(--dim);
   margin-bottom: 0.2rem;
 }
@@ -343,7 +343,7 @@ header h1 {
 .disk-info {
   display: flex;
   justify-content: space-between;
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   margin-bottom: 0.2rem;
 }
 
