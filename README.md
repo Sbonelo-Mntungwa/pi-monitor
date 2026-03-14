@@ -120,13 +120,3 @@ pi-monitor/
         ├── routes.rs         # request routing
         └── prometheus.rs     # exposition format output
 ```
-
-## Project Status
-
-- [x] Phase 1: Project setup & build pipeline
-- [x] Phase 2: Metrics collection (CPU, memory, disk, network, system)
-- [x] Phase 3: HTTP server & API (`/metrics`, `/json`, `/health`)
-- [x] Phase 4: Web dashboard with click-to-expand modals
-- [x] Phase 5: Deploy & test on Raspberry Pi
-- [x] Phase 6: Auto-start on boot via `/etc/profile`
-- [x] Phase 7: Grafana + Prometheus integration
