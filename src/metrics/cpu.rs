@@ -4,6 +4,7 @@ use std::sync::{Arc, Mutex};
 use std::time::Duration;
 
 #[derive(Debug, Clone)]
+#[allow(dead_code)]
 pub struct RawCpuCounters {
     pub name: String,
     pub user: u64,
@@ -20,6 +21,7 @@ pub struct RawCpuCounters {
 
 impl RawCpuCounters {
     /// Excludes guest/guest_nice — they're already counted in user/nice.
+    #[allow(dead_code)]
     pub fn total_ticks(&self) -> u64 {
         self.user + self.nice + self.system + self.idle
             + self.iowait + self.irq + self.softirq + self.steal
