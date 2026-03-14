@@ -120,3 +120,7 @@ pi-monitor/
         ├── routes.rs         # request routing
         └── prometheus.rs     # exposition format output
 ```
+
+## License
+
+MIT License — See LICENSE file
