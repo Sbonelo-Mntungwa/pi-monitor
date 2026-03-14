@@ -19,9 +19,8 @@
 .env
 .env.local
 
-
-# Added by cargo
-#
-# already existing elements were commented out
-
-#/target
+# Prometheus runtime data
+monitoring/prometheus-data/
+monitoring/prometheus.log
+monitoring/prometheus.yml
+data/

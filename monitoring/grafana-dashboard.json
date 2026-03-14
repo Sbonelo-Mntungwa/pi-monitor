@@ -1,0 +1,486 @@
+{
+  "annotations": { "list": [] },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [],
+  "liveNow": true,
+  "style": "dark",
+  "panels": [
+    {
+      "type": "row",
+      "title": "◆ SYSTEM OVERVIEW",
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 0 },
+      "collapsed": false
+    },
+    {
+      "type": "stat",
+      "title": "◇ CPU",
+      "gridPos": { "h": 4, "w": 4, "x": 0, "y": 1 },
+      "transparent": true,
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "steps": [
+              { "color": "#22d3ee", "value": null },
+              { "color": "#40e0d0", "value": 30 },
+              { "color": "#fbbf24", "value": 70 },
+              { "color": "#f87171", "value": 90 }
+            ]
+          },
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "color": { "mode": "thresholds" }
+        }
+      },
+      "targets": [{
+        "expr": "100 - pi_cpu_usage_percent{cpu=\"total\", mode=\"idle\"}",
+        "legendFormat": "CPU"
+      }],
+      "options": { "graphMode": "area", "colorMode": "background_solid", "textMode": "value_and_name", "reduceOptions": { "calcs": ["lastNotNull"] } }
+    },
+    {
+      "type": "stat",
+      "title": "◇ MEMORY",
+      "gridPos": { "h": 4, "w": 4, "x": 4, "y": 1 },
+      "transparent": true,
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "steps": [
+              { "color": "#22d3ee", "value": null },
+              { "color": "#40e0d0", "value": 30 },
+              { "color": "#fbbf24", "value": 70 },
+              { "color": "#f87171", "value": 90 }
+            ]
+          },
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "color": { "mode": "thresholds" }
+        }
+      },
+      "targets": [{
+        "expr": "pi_memory_used_bytes / pi_memory_total_bytes * 100",
+        "legendFormat": "Memory"
+      }],
+      "options": { "graphMode": "area", "colorMode": "background_solid", "textMode": "value_and_name", "reduceOptions": { "calcs": ["lastNotNull"] } }
+    },
+    {
+      "type": "stat",
+      "title": "◇ DISK /",
+      "gridPos": { "h": 4, "w": 4, "x": 8, "y": 1 },
+      "transparent": true,
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "steps": [
+              { "color": "#22d3ee", "value": null },
+              { "color": "#40e0d0", "value": 30 },
+              { "color": "#fbbf24", "value": 70 },
+              { "color": "#f87171", "value": 90 }
+            ]
+          },
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "color": { "mode": "thresholds" }
+        }
+      },
+      "targets": [{
+        "expr": "pi_disk_used_bytes{mountpoint=\"/\"} / pi_disk_total_bytes{mountpoint=\"/\"} * 100",
+        "legendFormat": "Disk /"
+      }],
+      "options": { "graphMode": "area", "colorMode": "background_solid", "textMode": "value_and_name", "reduceOptions": { "calcs": ["lastNotNull"] } }
+    },
+    {
+      "type": "stat",
+      "title": "◇ UPTIME",
+      "gridPos": { "h": 4, "w": 4, "x": 12, "y": 1 },
+      "transparent": true,
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": { "steps": [{ "color": "#0d9488", "value": null }] },
+          "unit": "s",
+          "color": { "mode": "thresholds" }
+        }
+      },
+      "targets": [{
+        "expr": "pi_uptime_seconds",
+        "legendFormat": "Uptime"
+      }],
+      "options": { "graphMode": "none", "colorMode": "background_solid", "textMode": "value_and_name", "reduceOptions": { "calcs": ["lastNotNull"] } }
+    },
+    {
+      "type": "stat",
+      "title": "◇ LOAD 1m",
+      "gridPos": { "h": 4, "w": 4, "x": 16, "y": 1 },
+      "transparent": true,
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "steps": [
+              { "color": "#34d399", "value": null },
+              { "color": "#0d9488", "value": 1 },
+              { "color": "#fbbf24", "value": 2 },
+              { "color": "#f87171", "value": 4 }
+            ]
+          },
+          "decimals": 2,
+          "color": { "mode": "thresholds" }
+        }
+      },
+      "targets": [{
+        "expr": "pi_load_average{period=\"1m\"}",
+        "legendFormat": "Load 1m"
+      }],
+      "options": { "graphMode": "area", "colorMode": "background_solid", "textMode": "value_and_name", "reduceOptions": { "calcs": ["lastNotNull"] } }
+    },
+    {
+      "type": "stat",
+      "title": "◇ PROCS",
+      "gridPos": { "h": 4, "w": 4, "x": 20, "y": 1 },
+      "transparent": true,
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": { "steps": [{ "color": "#1a5c6a", "value": null }] },
+          "color": { "mode": "thresholds" }
+        }
+      },
+      "targets": [{
+        "expr": "pi_processes_total",
+        "legendFormat": "Total"
+      }],
+      "options": { "graphMode": "area", "colorMode": "background_solid", "textMode": "value_and_name", "reduceOptions": { "calcs": ["lastNotNull"] } }
+    },
+    {
+      "type": "row",
+      "title": "◆ CPU",
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 5 },
+      "collapsed": false
+    },
+    {
+      "type": "timeseries",
+      "title": "◇ CPU USAGE",
+      "gridPos": { "h": 8, "w": 16, "x": 0, "y": 6 },
+      "transparent": true,
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 20,
+            "gradientMode": "opacity",
+            "showPoints": "never",
+            "spanNulls": true,
+            "lineInterpolation": "smooth"
+          },
+          "color": { "mode": "palette-classic" }
+        },
+        "overrides": [
+          { "matcher": { "id": "byName", "options": "user" }, "properties": [{ "id": "color", "value": { "fixedColor": "#40e0d0", "mode": "fixed" } }] },
+          { "matcher": { "id": "byName", "options": "system" }, "properties": [{ "id": "color", "value": { "fixedColor": "#0d9488", "mode": "fixed" } }] },
+          { "matcher": { "id": "byName", "options": "iowait" }, "properties": [{ "id": "color", "value": { "fixedColor": "#fbbf24", "mode": "fixed" } }] }
+        ]
+      },
+      "targets": [
+        { "expr": "pi_cpu_usage_percent{cpu=\"total\", mode=\"user\"}", "legendFormat": "user" },
+        { "expr": "pi_cpu_usage_percent{cpu=\"total\", mode=\"system\"}", "legendFormat": "system" },
+        { "expr": "pi_cpu_usage_percent{cpu=\"total\", mode=\"iowait\"}", "legendFormat": "iowait" }
+      ],
+      "options": { "tooltip": { "mode": "multi" }, "legend": { "displayMode": "table", "placement": "right", "calcs": ["mean", "max", "lastNotNull"] } }
+    },
+    {
+      "type": "gauge",
+      "title": "◇ PER-CORE",
+      "gridPos": { "h": 8, "w": 8, "x": 16, "y": 6 },
+      "transparent": true,
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "thresholds": {
+            "steps": [
+              { "color": "#143040", "value": null },
+              { "color": "#22d3ee", "value": 5 },
+              { "color": "#40e0d0", "value": 30 },
+              { "color": "#fbbf24", "value": 70 },
+              { "color": "#f87171", "value": 90 }
+            ]
+          },
+          "color": { "mode": "thresholds" }
+        }
+      },
+      "targets": [{
+        "expr": "100 - pi_cpu_usage_percent{cpu!=\"total\", mode=\"idle\"}",
+        "legendFormat": "{{cpu}}"
+      }],
+      "options": { "showThresholdLabels": false, "showThresholdMarkers": true, "orientation": "auto" }
+    },
+    {
+      "type": "row",
+      "title": "◆ MEMORY",
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 14 },
+      "collapsed": false
+    },
+    {
+      "type": "timeseries",
+      "title": "◇ MEMORY ALLOCATION",
+      "gridPos": { "h": 8, "w": 16, "x": 0, "y": 15 },
+      "transparent": true,
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 25,
+            "gradientMode": "opacity",
+            "showPoints": "never",
+            "stacking": { "mode": "normal" },
+            "spanNulls": true,
+            "lineInterpolation": "smooth"
+          },
+          "color": { "mode": "palette-classic" }
+        },
+        "overrides": [
+          { "matcher": { "id": "byName", "options": "Used" }, "properties": [{ "id": "color", "value": { "fixedColor": "#40e0d0", "mode": "fixed" } }] },
+          { "matcher": { "id": "byName", "options": "Buffers" }, "properties": [{ "id": "color", "value": { "fixedColor": "#0d9488", "mode": "fixed" } }] },
+          { "matcher": { "id": "byName", "options": "Cached" }, "properties": [{ "id": "color", "value": { "fixedColor": "#1a5c6a", "mode": "fixed" } }] },
+          { "matcher": { "id": "byName", "options": "Free" }, "properties": [{ "id": "color", "value": { "fixedColor": "#143040", "mode": "fixed" } }] }
+        ]
+      },
+      "targets": [
+        { "expr": "pi_memory_used_bytes", "legendFormat": "Used" },
+        { "expr": "pi_memory_buffers_bytes", "legendFormat": "Buffers" },
+        { "expr": "pi_memory_cached_bytes", "legendFormat": "Cached" },
+        { "expr": "pi_memory_free_bytes", "legendFormat": "Free" }
+      ],
+      "options": { "tooltip": { "mode": "multi" }, "legend": { "displayMode": "table", "placement": "right", "calcs": ["lastNotNull"] } }
+    },
+    {
+      "type": "piechart",
+      "title": "◇ BREAKDOWN",
+      "gridPos": { "h": 8, "w": 8, "x": 16, "y": 15 },
+      "transparent": true,
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "color": { "mode": "fixed" }
+        },
+        "overrides": [
+          { "matcher": { "id": "byName", "options": "Used" }, "properties": [{ "id": "color", "value": { "fixedColor": "#40e0d0", "mode": "fixed" } }] },
+          { "matcher": { "id": "byName", "options": "Buffers" }, "properties": [{ "id": "color", "value": { "fixedColor": "#0d9488", "mode": "fixed" } }] },
+          { "matcher": { "id": "byName", "options": "Cached" }, "properties": [{ "id": "color", "value": { "fixedColor": "#1a5c6a", "mode": "fixed" } }] },
+          { "matcher": { "id": "byName", "options": "Free" }, "properties": [{ "id": "color", "value": { "fixedColor": "#143040", "mode": "fixed" } }] }
+        ]
+      },
+      "targets": [
+        { "expr": "pi_memory_used_bytes", "legendFormat": "Used" },
+        { "expr": "pi_memory_buffers_bytes", "legendFormat": "Buffers" },
+        { "expr": "pi_memory_cached_bytes", "legendFormat": "Cached" },
+        { "expr": "pi_memory_free_bytes", "legendFormat": "Free" }
+      ],
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "legend": { "displayMode": "table", "placement": "right" }, "pieType": "donut" }
+    },
+    {
+      "type": "row",
+      "title": "◆ SYSTEM & LOAD",
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 23 },
+      "collapsed": false
+    },
+    {
+      "type": "timeseries",
+      "title": "◇ LOAD AVERAGES",
+      "gridPos": { "h": 7, "w": 12, "x": 0, "y": 24 },
+      "transparent": true,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 15,
+            "showPoints": "never",
+            "spanNulls": true,
+            "lineInterpolation": "smooth"
+          },
+          "color": { "mode": "palette-classic" }
+        },
+        "overrides": [
+          { "matcher": { "id": "byName", "options": "1m" }, "properties": [{ "id": "color", "value": { "fixedColor": "#40e0d0", "mode": "fixed" } }] },
+          { "matcher": { "id": "byName", "options": "5m" }, "properties": [{ "id": "color", "value": { "fixedColor": "#0d9488", "mode": "fixed" } }] },
+          { "matcher": { "id": "byName", "options": "15m" }, "properties": [{ "id": "color", "value": { "fixedColor": "#1a5c6a", "mode": "fixed" } }] }
+        ]
+      },
+      "targets": [
+        { "expr": "pi_load_average{period=\"1m\"}", "legendFormat": "1m" },
+        { "expr": "pi_load_average{period=\"5m\"}", "legendFormat": "5m" },
+        { "expr": "pi_load_average{period=\"15m\"}", "legendFormat": "15m" }
+      ],
+      "options": { "tooltip": { "mode": "multi" }, "legend": { "displayMode": "list", "placement": "bottom" } }
+    },
+    {
+      "type": "timeseries",
+      "title": "◇ PROCESSES",
+      "gridPos": { "h": 7, "w": 12, "x": 12, "y": 24 },
+      "transparent": true,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 15,
+            "showPoints": "never",
+            "spanNulls": true,
+            "lineInterpolation": "smooth"
+          },
+          "color": { "mode": "palette-classic" }
+        },
+        "overrides": [
+          { "matcher": { "id": "byName", "options": "Total" }, "properties": [{ "id": "color", "value": { "fixedColor": "#22d3ee", "mode": "fixed" } }] },
+          { "matcher": { "id": "byName", "options": "Running" }, "properties": [{ "id": "color", "value": { "fixedColor": "#34d399", "mode": "fixed" } }] }
+        ]
+      },
+      "targets": [
+        { "expr": "pi_processes_total", "legendFormat": "Total" },
+        { "expr": "pi_processes_running", "legendFormat": "Running" }
+      ],
+      "options": { "tooltip": { "mode": "multi" }, "legend": { "displayMode": "list", "placement": "bottom" } }
+    },
+    {
+      "type": "row",
+      "title": "◆ NETWORK",
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 31 },
+      "collapsed": false
+    },
+    {
+      "type": "timeseries",
+      "title": "◇ BANDWIDTH (bytes/sec)",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 32 },
+      "transparent": true,
+      "fieldConfig": {
+        "defaults": {
+          "unit": "Bps",
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 20,
+            "gradientMode": "opacity",
+            "showPoints": "never",
+            "spanNulls": true,
+            "lineInterpolation": "smooth"
+          },
+          "color": { "mode": "palette-classic" }
+        },
+        "overrides": [
+          { "matcher": { "id": "byName", "options": "rx eth0" }, "properties": [{ "id": "color", "value": { "fixedColor": "#40e0d0", "mode": "fixed" } }] },
+          { "matcher": { "id": "byName", "options": "tx eth0" }, "properties": [{ "id": "color", "value": { "fixedColor": "#0d9488", "mode": "fixed" } }] }
+        ]
+      },
+      "targets": [
+        { "expr": "rate(pi_network_receive_bytes_total{interface=\"eth0\"}[1m])", "legendFormat": "rx eth0" },
+        { "expr": "rate(pi_network_transmit_bytes_total{interface=\"eth0\"}[1m])", "legendFormat": "tx eth0" }
+      ],
+      "options": { "tooltip": { "mode": "multi" }, "legend": { "displayMode": "list", "placement": "bottom" } }
+    },
+    {
+      "type": "timeseries",
+      "title": "◇ PACKETS/sec",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 32 },
+      "transparent": true,
+      "fieldConfig": {
+        "defaults": {
+          "unit": "pps",
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 20,
+            "gradientMode": "opacity",
+            "showPoints": "never",
+            "spanNulls": true,
+            "lineInterpolation": "smooth"
+          },
+          "color": { "mode": "palette-classic" }
+        },
+        "overrides": [
+          { "matcher": { "id": "byName", "options": "rx pkts" }, "properties": [{ "id": "color", "value": { "fixedColor": "#22d3ee", "mode": "fixed" } }] },
+          { "matcher": { "id": "byName", "options": "tx pkts" }, "properties": [{ "id": "color", "value": { "fixedColor": "#38bdf8", "mode": "fixed" } }] },
+          { "matcher": { "id": "byName", "options": "rx errors" }, "properties": [{ "id": "color", "value": { "fixedColor": "#f87171", "mode": "fixed" } }] }
+        ]
+      },
+      "targets": [
+        { "expr": "rate(pi_network_receive_packets_total{interface=\"eth0\"}[1m])", "legendFormat": "rx pkts" },
+        { "expr": "rate(pi_network_transmit_packets_total{interface=\"eth0\"}[1m])", "legendFormat": "tx pkts" },
+        { "expr": "rate(pi_network_receive_errors_total{interface=\"eth0\"}[1m])", "legendFormat": "rx errors" }
+      ],
+      "options": { "tooltip": { "mode": "multi" }, "legend": { "displayMode": "list", "placement": "bottom" } }
+    },
+    {
+      "type": "row",
+      "title": "◆ DISK",
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 40 },
+      "collapsed": false
+    },
+    {
+      "type": "bargauge",
+      "title": "◇ DISK USAGE",
+      "gridPos": { "h": 7, "w": 12, "x": 0, "y": 41 },
+      "transparent": true,
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "thresholds": {
+            "steps": [
+              { "color": "#143040", "value": null },
+              { "color": "#0d9488", "value": 10 },
+              { "color": "#40e0d0", "value": 40 },
+              { "color": "#fbbf24", "value": 70 },
+              { "color": "#f87171", "value": 90 }
+            ]
+          },
+          "color": { "mode": "thresholds" }
+        }
+      },
+      "targets": [{
+        "expr": "pi_disk_used_bytes / pi_disk_total_bytes * 100",
+        "legendFormat": "{{mountpoint}}"
+      }],
+      "options": { "orientation": "horizontal", "displayMode": "gradient", "showUnfilled": true, "reduceOptions": { "calcs": ["lastNotNull"] } }
+    },
+    {
+      "type": "table",
+      "title": "◇ DISK DETAIL",
+      "gridPos": { "h": 7, "w": 12, "x": 12, "y": 41 },
+      "transparent": true,
+      "fieldConfig": {
+        "defaults": { "unit": "bytes" },
+        "overrides": [
+          { "matcher": { "id": "byName", "options": "Usage %" }, "properties": [{ "id": "unit", "value": "percent" }, { "id": "thresholds", "value": { "steps": [{ "color": "#0d9488", "value": null }, { "color": "#40e0d0", "value": 40 }, { "color": "#fbbf24", "value": 70 }, { "color": "#f87171", "value": 90 }] } }, { "id": "custom.cellOptions", "value": { "type": "color-background" } }] }
+        ]
+      },
+      "targets": [
+        { "expr": "pi_disk_total_bytes", "legendFormat": "{{mountpoint}}", "format": "table", "instant": true, "refId": "A" },
+        { "expr": "pi_disk_used_bytes", "legendFormat": "{{mountpoint}}", "format": "table", "instant": true, "refId": "B" },
+        { "expr": "pi_disk_free_bytes", "legendFormat": "{{mountpoint}}", "format": "table", "instant": true, "refId": "C" },
+        { "expr": "pi_disk_used_bytes / pi_disk_total_bytes * 100", "legendFormat": "{{mountpoint}}", "format": "table", "instant": true, "refId": "D" }
+      ],
+      "transformations": [
+        { "id": "merge", "options": {} },
+        { "id": "organize", "options": { "excludeByName": { "Time": true }, "renameByName": { "Value #A": "Total", "Value #B": "Used", "Value #C": "Free", "Value #D": "Usage %", "mountpoint": "Mount" } } }
+      ],
+      "options": { "footer": { "enablePagination": false } }
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 39,
+  "tags": ["pi-monitor", "raspberry-pi"],
+  "templating": { "list": [] },
+  "time": { "from": "now-1h", "to": "now" },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Pi-Monitor",
+  "uid": "pi-monitor",
+  "version": 1
+}
